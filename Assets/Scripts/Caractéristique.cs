@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class Caractéristique : MonoBehaviour
@@ -27,11 +28,16 @@ public class Caractéristique : MonoBehaviour
     public bool isDashing;
     public bool Dashable;
 
+    public Animator animator;
+
+    public Image cdDash;
+
     public Material CatMat;
     public Material DashMat;
+
     private Renderer renderer;
 
-    public Animator animator;
+
     Rigidbody rb;
 
    // private Rigidbody rb;
@@ -59,6 +65,8 @@ public class Caractéristique : MonoBehaviour
         ControleJump();
         ControleCompteurDash();
         ControleMat();
+
+        UIDash();
 
         DureeDashingIncrem();
 
@@ -88,7 +96,7 @@ public class Caractéristique : MonoBehaviour
         // Appliquer le mouvement
         transform.Translate(movement);
         transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Time.deltaTime * speed * 10);
-        transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * Time.deltaTime * speed * 10);
+        //transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * Time.deltaTime * speed * 10);
 
 
     }
@@ -201,6 +209,11 @@ public class Caractéristique : MonoBehaviour
                 renderer.material = CatMat;
             }
         }
+    }
+    void UIDash()
+    {
+        cdDash.fillAmount = compteurDash/cooldownDash;
+
     }
 
 }
