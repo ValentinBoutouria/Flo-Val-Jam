@@ -14,12 +14,15 @@ public class Caractéristique : MonoBehaviour
     public float dashSpeed = 20f;
     public float jumpForce = 2f;
 
+    
+    public float Degatscat = 2f;
+
     public float compteurDash = 1f;
     public float cooldownDash = 1f;
     public float DureeDash = 1f;
     public float DureeDashing = 1f;
 
-    public float life = 100f;
+    public float PVcat = 100f;
 
     public bool isGrounded;
     public bool isSit;
@@ -65,6 +68,7 @@ public class Caractéristique : MonoBehaviour
         ControleJump();
         ControleCompteurDash();
         ControleMat();
+        //ControleCompteurDegat();
 
         UIDash();
 
@@ -194,6 +198,16 @@ public class Caractéristique : MonoBehaviour
             Dashable = true;
         }   
     }
+    /*
+    void ControleCompteurDegat()
+    {
+        if (compteurDegat<cooldownDegat)//on dash pas et le cooldown est pas ok
+        { 
+            compteurDegat += Time.deltaTime;
+        }
+       
+    }
+    */
     void ControleMat()
     {
         if (isDashing)
@@ -214,6 +228,26 @@ public class Caractéristique : MonoBehaviour
     {
         cdDash.fillAmount = compteurDash/cooldownDash;
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Mob"))
+        {
+            CaractéristiqueMob caracmobtemp=other.GetComponent<CaractéristiqueMob>();
+            //Debug.Log("mob");
+
+                if(isDashing)
+                {
+                    caracmobtemp.PV -= Degatscat;
+                    
+                }
+                else
+                {
+                    PVcat -= caracmobtemp.Degats;
+                    
+                }
+            
+        }
     }
 
 }
