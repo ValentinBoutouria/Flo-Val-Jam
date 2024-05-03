@@ -10,18 +10,24 @@ public class Caractéristique : MonoBehaviour
     public float runningSpeed = 10f;
     public float jumpForce = 2f;
     public float life = 100f;
+
     public bool isGrounded;
+    public bool isSit;
     public bool isWalking;
     public bool isRunning;
     public bool isDashing;
+    public Animator animator;
+
+   // private Rigidbody rb;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+        //rb = GetComponent<Rigidbody>();
+
+
     }
 
     // Update is called once per frame
@@ -29,7 +35,9 @@ public class Caractéristique : MonoBehaviour
     {
         DeplacementWalk();
         DeplacementRun();
+        ControleWalk();
         Jump();
+        
 
 
 
@@ -38,6 +46,7 @@ public class Caractéristique : MonoBehaviour
         // Déplacement horizontal
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+        
         Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * speed * Time.deltaTime;
         transform.Translate(movement);
 
@@ -47,14 +56,19 @@ public class Caractéristique : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            isRunning= true;
+            animator.SetBool("IsRunning", true);
+            isRunning = true;
+
+            animator.SetBool("IsWalking", false);
             isWalking = false;
+
             speed = runningSpeed;
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            isRunning= false;
-            isWalking= true;
+            animator.SetBool("IsRunning", false);
+            isRunning = false;
+            
             speed = walkingSpeed;
 
         }
@@ -62,6 +76,20 @@ public class Caractéristique : MonoBehaviour
     }
     void ControleWalk()
     {
+        if (isRunning==false && (Input.GetAxis("Horizontal")!=0 || Input.GetAxis("Vertical")!=0)) 
+        {
+            animator.SetBool("IsWalking", true);
+            isWalking = true;
+            
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
+            isWalking=false;
+
+            animator.SetBool("IsSit", true);
+            isSit = true;
+        }
 
     }
 
