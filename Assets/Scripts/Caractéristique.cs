@@ -27,7 +27,9 @@ public class Caractéristique : MonoBehaviour
     public bool isDashing;
     public bool Dashable;
 
-    public GameObject Armaturechat;
+    public Material CatMat;
+    public Material DashMat;
+    private Renderer renderer;
 
     public Animator animator;
     Rigidbody rb;
@@ -40,6 +42,7 @@ public class Caractéristique : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        renderer = GetComponentInChildren<Renderer>();
         Cursor.visible = false;
 
 
@@ -55,6 +58,7 @@ public class Caractéristique : MonoBehaviour
         ControleDash();
         ControleJump();
         ControleCompteurDash();
+        ControleMat();
 
         DureeDashingIncrem();
 
@@ -180,6 +184,22 @@ public class Caractéristique : MonoBehaviour
         {
             Dashable = true;
         }   
+    }
+    void ControleMat()
+    {
+        if (isDashing)
+        {
+            if(renderer.material!=DashMat)
+            {
+                renderer.material = DashMat;
+            }
+        }
+        else {
+            if (renderer.material != CatMat)
+            {
+                renderer.material = CatMat;
+            }
+        }
     }
 
 }
