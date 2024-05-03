@@ -281,9 +281,6 @@ PrefabInstance:
       addedObject: {fileID: 4364389571424924051}
     - targetCorrespondingSourceObject: {fileID: 1526554761915109350, guid: 076879464bd682945aa7cd31ae139a36, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7017620680868754662}
-    - targetCorrespondingSourceObject: {fileID: 1526554761915109350, guid: 076879464bd682945aa7cd31ae139a36, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4382820754125908321}
   m_SourcePrefab: {fileID: 100100000, guid: 076879464bd682945aa7cd31ae139a36, type: 3}
 --- !u!1 &6623557914909463715 stripped
@@ -325,21 +322,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  walkingSpeed: 5
+  runningSpeed: 10
+  dashSpeed: 20
   jumpForce: 2
+  compteurDash: 1
+  cooldownDash: 1
+  DureeDash: 1
+  DureeDashing: 1
+  life: 100
   isGrounded: 1
---- !u!114 &7017620680868754662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6623557914909463715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec6f36d02e9b01c4ab8cf81074c54866, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
+  isSit: 0
+  isWalking: 0
+  isRunning: 0
+  isDashing: 0
+  Dashable: 0
+  CatMat: {fileID: 0}
+  DashMat: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!54 &4382820754125908321
 Rigidbody:
   m_ObjectHideFlags: 0

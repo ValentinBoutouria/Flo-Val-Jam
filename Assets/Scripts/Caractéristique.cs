@@ -88,8 +88,9 @@ public class Caractéristique : MonoBehaviour
         // Appliquer le mouvement
         transform.Translate(movement);
         transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Time.deltaTime * speed * 10);
+        transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * Time.deltaTime * speed * 10);
 
-        
+
     }
     void DeplacementRun()
     {
