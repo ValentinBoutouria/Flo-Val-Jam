@@ -26,6 +26,9 @@ public class Caractéristique : MonoBehaviour
     public bool isRunning;
     public bool isDashing;
     public bool Dashable;
+
+    public GameObject Armaturechat;
+
     public Animator animator;
     Rigidbody rb;
 
@@ -66,16 +69,16 @@ public class Caractéristique : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         // Calculer la direction de déplacement
-        Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput);
+        Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput)*speed*Time.deltaTime;
 
         // Vérifier si le personnage est en mouvement
         if (movement != Vector3.zero)
         {
             // Calculer la rotation pour faire face à la direction de déplacement
-            Quaternion targetRotation = Quaternion.LookRotation(movement);
+            //Quaternion targetRotation = Quaternion.LookRotation(movement);
 
             // Interpoler doucement la rotation actuelle vers la rotation ciblée
-            //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+            //Armaturechat.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
 
         // Appliquer le mouvement
