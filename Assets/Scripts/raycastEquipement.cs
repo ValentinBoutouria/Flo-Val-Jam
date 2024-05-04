@@ -22,7 +22,7 @@ public class raycastEquipement : MonoBehaviour
             Debug.DrawRay(cam.transform.position, cam.transform.forward * hit.distance, Color.red);
 
             // Vérifie si l'objet touché a le tag "epee" ou d'autres tags spécifiques
-            if (hit.collider.CompareTag("epee")  || hit.collider.CompareTag("Armures") )
+            if (hit.collider.CompareTag("epee")  || hit.collider.CompareTag("Armures") || hit.collider.CompareTag("Boots"))
             {
                 // Stocke le tag et le nom de l'objet actuellement visé
                 currentTag = hit.collider.tag;

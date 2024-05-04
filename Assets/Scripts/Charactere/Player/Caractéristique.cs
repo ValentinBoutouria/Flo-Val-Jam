@@ -13,10 +13,10 @@ public class Caractéristique : MonoBehaviour
 {
     public int gold = 0;
     public float speed = 5f;
-    public float walkingSpeed = 5f;
-    public float runningSpeed = 10f;
-    public float dashSpeed = 20f;
-    public float Slowspeed = 1f;
+    public float walkingSpeed = 50f;
+    public float runningSpeed = 100f;
+    public float dashSpeed = 200f;
+    public float Slowspeed = 10f;
     public float jumpForce = 2f;
 
     

@@ -13,6 +13,8 @@ TagManager:
   - Armures
   - Projectile
   - Teleporteur
+  - ListeMob
+  - Boots
   layers:
   - Default
   - TransparentFX
