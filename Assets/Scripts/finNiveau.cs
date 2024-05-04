@@ -9,18 +9,32 @@ public class finNiveau : MonoBehaviour
     public float objectiveTime = 10f;
     public Dictionary<string, Dictionary<string, int>> GameStuff;
     public Transform lobbySpawn;
+    private GameObject ListeMob;
+    public bool isEndable;
 
     // Start is called before the first frame update
     void Start()
     {
+        isEndable = false;
         eq = GameObject.Find("GestionEquipement").GetComponent<Equipement>();
         GameStuff = eq.GameStuff;
+        foreach (Transform child in this.transform.parent)
+        {
+            if (child.gameObject.tag == "ListeMob")
+            {
+                ListeMob = child.gameObject;
+                break;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(ListeMob.transform.childCount == 0)
+        {
+            isEndable = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
