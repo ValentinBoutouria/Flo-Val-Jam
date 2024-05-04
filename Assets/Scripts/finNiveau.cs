@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class finNiveau : MonoBehaviour
 {
     public float time;
+    public float Besttime;
+    public TextMeshProUGUI BesttimerText;
     public Equipement eq;
     public float objectiveTime = 10f;
     public Dictionary<string, Dictionary<string, int>> GameStuff;
@@ -15,6 +18,7 @@ public class finNiveau : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         isEndable = false;
         eq = GameObject.Find("GestionEquipement").GetComponent<Equipement>();
         GameStuff = eq.GameStuff;
@@ -45,6 +49,12 @@ public class finNiveau : MonoBehaviour
             {
                 other.transform.position = lobbySpawn.position;
                 time = GetComponent<timer>().timeElapsed;
+               
+                if(Besttime > time) 
+                {
+                    Besttime=time;
+                    BesttimerText.text = "Best Time : " + time.ToString("F2") + "s";
+                }
                 tirageObjet();
             }
         }
