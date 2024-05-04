@@ -6,6 +6,7 @@ TagManager:
   tags:
   - epee
   - Mob
+  - Armure
   layers:
   - Default
   - TransparentFX

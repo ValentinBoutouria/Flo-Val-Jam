@@ -1634,7 +1634,7 @@ GameObject:
   - component: {fileID: 4382820754125908321}
   m_Layer: 0
   m_Name: cat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1717,11 +1717,12 @@ MonoBehaviour:
   runningSpeed: 10
   dashSpeed: 20
   jumpForce: 6
+  Degatscat: 2
   compteurDash: 1
   cooldownDash: 4
   DureeDash: 0.4
   DureeDashing: 1
-  life: 100
+  PVcat: 100
   isGrounded: 1
   isSit: 0
   isWalking: 0

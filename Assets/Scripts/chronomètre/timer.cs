@@ -8,6 +8,7 @@ public class timer : MonoBehaviour
     public TextMeshProUGUI timerText; // Référence à l'objet TextMeshProUGUI pour afficher le timer
     private float startTime; // Temps de départ
     private bool isRunning = false; // Indique si le timer est en cours d'exécution
+    public float timeElapsed; // Temps écoulé
 
     void OnEnable()
     {
@@ -21,7 +22,7 @@ public class timer : MonoBehaviour
         if (isRunning)
         {
             // Calcule le temps écoulé et l'affiche
-            float timeElapsed = Time.time - startTime;
+            timeElapsed = Time.time - startTime;
             timerText.text = "Temps écoulé : " + timeElapsed.ToString("F2") + " secondes";
         }
     }
