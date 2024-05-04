@@ -67,8 +67,11 @@ public class Caractéristique : MonoBehaviour
 
     // private Rigidbody rb;
 
-    Equipement equipement; 
-
+    Equipement equipement;
+    Vector2 rotation = Vector2.zero;
+    public float lookSpeed = 2.0f;
+    public float lookXLimit = 60.0f;
+    public Transform playerCameraParent;
 
     // Start is called before the first frame update
     void Start()
@@ -131,8 +134,13 @@ public class Caractéristique : MonoBehaviour
 
         // Appliquer le mouvement
         transform.Translate(movement);
-        transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Time.deltaTime * speed * 10);
-            Cam.transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * Time.deltaTime * speed*2);
+        //transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Time.deltaTime * speed * 10);
+        //Cam.transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * Time.deltaTime * speed*2);
+        rotation.y += Input.GetAxis("Mouse X") * lookSpeed;
+        rotation.x += -Input.GetAxis("Mouse Y") * lookSpeed;
+        rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);
+        playerCameraParent.localRotation = Quaternion.Euler(rotation.x, 0, 0);
+        transform.eulerAngles = new Vector2(0, rotation.y);
         if (Input.GetMouseButton(1))
         {
 
