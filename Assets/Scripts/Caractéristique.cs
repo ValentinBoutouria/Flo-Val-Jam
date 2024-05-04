@@ -18,6 +18,10 @@ public class Caractéristique : MonoBehaviour
     
     public float Degatscat = 2f;
 
+    public float compteurDegPiege = 1f;
+    public float cooldownDegPiege = 1f;
+    public float DegatsPiege = 2f;
+
     public float compteurDash = 1f;
     public float cooldownDash = 1f;
     public float DureeDash = 1f;
@@ -71,6 +75,7 @@ public class Caractéristique : MonoBehaviour
         ControleJump();
         ControleCompteurDash();
         ControleMat();
+        ControleCompteurDegatPiege();
         //ControleCompteurDegat();
 
         UIDash();
@@ -203,16 +208,16 @@ public class Caractéristique : MonoBehaviour
             Dashable = true;
         }   
     }
-    /*
-    void ControleCompteurDegat()
+    
+    void ControleCompteurDegatPiege()
     {
-        if (compteurDegat<cooldownDegat)//on dash pas et le cooldown est pas ok
+        if (compteurDegPiege<cooldownDegPiege)
         { 
-            compteurDegat += Time.deltaTime;
+            compteurDegPiege += Time.deltaTime;
         }
        
     }
-    */
+    
     void ControleMat()
     {
         if (isDashing)
@@ -262,7 +267,15 @@ public class Caractéristique : MonoBehaviour
         {
             isSlow = false;
             animator.SetBool("IsSlow", false);
-
+        }
+        if(other.CompareTag("Piege"))
+        {
+            Debug.Log("test");
+            if(compteurDegPiege >= cooldownDegPiege)
+            {
+                Debug.Log("Ouch");
+                PVcat -= DegatsPiege;
+            }
         }
 
     }
