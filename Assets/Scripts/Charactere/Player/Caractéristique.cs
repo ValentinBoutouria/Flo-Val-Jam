@@ -60,6 +60,8 @@ public class Caractéristique : MonoBehaviour
 
     public GameObject Cam;
 
+    public GameObject LvlListe;
+
     private Renderer renderer;
 
 
@@ -322,6 +324,7 @@ public class Caractéristique : MonoBehaviour
         }
         if(isDead == true) 
         { 
+            LvlListe.gameObject.SetActive(false);
             this.transform.position= Vector3.zero;
             PVcat = PVcatMax;
             isDead = false;
@@ -369,7 +372,7 @@ public class Caractéristique : MonoBehaviour
         {
             if(compteurDeg>=cooldownDeg)
             {
-                Debug.Log("Ouch");
+                //Debug.Log("Ouch");
                 Shoot scriptShoottemp=other.GetComponentInParent<Shoot>();
                 PVcat -= scriptShoottemp.ProjectileDMG;
                 compteurDeg = 0;
@@ -379,6 +382,7 @@ public class Caractéristique : MonoBehaviour
         }
         if(other.CompareTag("Teleporteur"))
             {
+            LvlListe.gameObject.SetActive(true);
             TPVal Tpniveautemp= other.GetComponent<TPVal>();
             Tpniveautemp.lvl.gameObject.SetActive(true);
             this.transform.position=Tpniveautemp.SpawnPoint.transform.position;
