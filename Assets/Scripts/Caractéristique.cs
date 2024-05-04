@@ -3,19 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class Caractéristique : MonoBehaviour
 
 {
+    public int gold = 0;
     public float speed = 5f;
     public float walkingSpeed = 5f;
     public float runningSpeed = 10f;
     public float dashSpeed = 20f;
+    public float Slowspeed = 1f;
     public float jumpForce = 2f;
 
     
     public float Degatscat = 2f;
+
+    public float compteurDegPiege = 1f;
+    public float cooldownDegPiege = 1f;
+    public float DegatsPiege = 2f;
 
     public float compteurDash = 1f;
     public float cooldownDash = 1f;
@@ -23,20 +30,26 @@ public class Caractéristique : MonoBehaviour
     public float DureeDashing = 1f;
 
     public float PVcat = 100f;
+    private float PVcatMax = 100f;
 
     public bool isGrounded;
     public bool isSit;
     public bool isWalking;
     public bool isRunning;
     public bool isDashing;
+    public bool isSlow;
     public bool Dashable;
 
     public Animator animator;
 
     public Image cdDash;
+    public Image Pv;
 
     public Material CatMat;
     public Material DashMat;
+
+    public TextMeshProUGUI textPV;
+    public TextMeshProUGUI textGold;
 
     private Renderer renderer;
 
@@ -62,15 +75,20 @@ public class Caractéristique : MonoBehaviour
     {
         DeplacementWalk();
         DeplacementRun();
+
         ControleWalk();
         ControleSpeed();
         ControleDash();
         ControleJump();
         ControleCompteurDash();
         ControleMat();
+        ControleCompteurDegatPiege();
+        ControlePV();
         //ControleCompteurDegat();
 
         UIDash();
+        UIPV();
+        UIGold();
 
         DureeDashingIncrem();
 
@@ -128,9 +146,11 @@ public class Caractéristique : MonoBehaviour
     }
     void ControleSpeed() 
     {
-        if (isWalking && !isRunning && !isDashing) { speed = walkingSpeed; }
-        if (!isWalking && isRunning && !isDashing) { speed = runningSpeed; }
+        if (isWalking && !isRunning && !isDashing && !isSlow) { speed = walkingSpeed; }
+        if (!isWalking && isRunning && !isDashing && !isSlow) { speed = runningSpeed; }
         if (isDashing) { speed = dashSpeed; }
+        if (isSlow) { speed = Slowspeed; }
+
 
     }
     void ControleWalk()
@@ -198,16 +218,16 @@ public class Caractéristique : MonoBehaviour
             Dashable = true;
         }   
     }
-    /*
-    void ControleCompteurDegat()
+    
+    void ControleCompteurDegatPiege()
     {
-        if (compteurDegat<cooldownDegat)//on dash pas et le cooldown est pas ok
+        if (compteurDegPiege<cooldownDegPiege)
         { 
-            compteurDegat += Time.deltaTime;
+            compteurDegPiege += Time.deltaTime;
         }
        
     }
-    */
+    
     void ControleMat()
     {
         if (isDashing)
@@ -229,25 +249,58 @@ public class Caractéristique : MonoBehaviour
         cdDash.fillAmount = compteurDash/cooldownDash;
 
     }
+    void UIPV()
+    {
+        Pv.fillAmount = PVcat/PVcatMax;
+
+    }
+    void UIGold()
+    {
+        textGold.text = "Gold : " + gold;
+    }
+    void ControlePV()
+    {
+        textPV.text = "" + PVcat;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Mob"))
         {
             CaractéristiqueMob caracmobtemp=other.GetComponent<CaractéristiqueMob>();
-            //Debug.Log("mob");
-
                 if(isDashing)
                 {
-                    caracmobtemp.PV -= Degatscat;
-                    
+                    caracmobtemp.PV -= Degatscat;  
                 }
                 else
                 {
                     PVcat -= caracmobtemp.Degats;
-                    
                 }
-            
         }
+        if(other.CompareTag("Trampoline"))
+        {
+            
+            GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce*2, ForceMode.Impulse);
+        }
+        if(other.CompareTag("Slow"))
+        {
+            isSlow=true;
+            animator.SetBool("IsSlow", true);
+        }
+        if(other.CompareTag("Restore"))
+        {
+            isSlow = false;
+            animator.SetBool("IsSlow", false);
+        }
+        if(other.CompareTag("Piege"))
+        {
+            
+            if(compteurDegPiege >= cooldownDegPiege)
+            {
+                
+                PVcat -= DegatsPiege;
+            }
+        }
+
     }
 
 }
