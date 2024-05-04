@@ -62,6 +62,7 @@ public class Caractéristique : MonoBehaviour
     {
         DeplacementWalk();
         DeplacementRun();
+
         ControleWalk();
         ControleSpeed();
         ControleDash();
@@ -234,19 +235,19 @@ public class Caractéristique : MonoBehaviour
         if(other.CompareTag("Mob"))
         {
             CaractéristiqueMob caracmobtemp=other.GetComponent<CaractéristiqueMob>();
-            //Debug.Log("mob");
-
                 if(isDashing)
                 {
-                    caracmobtemp.PV -= Degatscat;
-                    
+                    caracmobtemp.PV -= Degatscat;  
                 }
                 else
                 {
                     PVcat -= caracmobtemp.Degats;
-                    
                 }
-            
+        }
+        if(other.CompareTag("Trampoline"))
+        {
+            Debug.Log(other.tag);
+            GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce*2, ForceMode.Impulse);
         }
     }
 

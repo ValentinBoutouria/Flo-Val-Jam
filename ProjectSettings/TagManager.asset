@@ -6,6 +6,9 @@ TagManager:
   tags:
   - epee
   - Mob
+  - Piege
+  - Trampoline
+  - Slow
   layers:
   - Default
   - TransparentFX
