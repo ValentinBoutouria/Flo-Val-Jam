@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33241488102382690}
   - component: {fileID: 23490559892862816}
   - component: {fileID: 8311680439869287469}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: legendaire
   m_TagString: epee
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 7095250460607360627}
   - component: {fileID: 2313020174720500706}
   - component: {fileID: 5263775290846289625}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

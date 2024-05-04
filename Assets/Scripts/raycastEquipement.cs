@@ -17,7 +17,9 @@ public class raycastEquipement : MonoBehaviour
     {
         // Lance un raycast à partir de la caméra
         RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
+        Vector3 playerPosition = cam.transform.parent.parent.position;
+
+        if (Physics.Raycast(playerPosition, this.transform.parent.forward, out hit))
         {
             Debug.DrawRay(cam.transform.position, cam.transform.forward * hit.distance, Color.red);
 

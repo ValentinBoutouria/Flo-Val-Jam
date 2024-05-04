@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7499452392430284880}
   - component: {fileID: 1715847060688700318}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: commune
   m_TagString: epee
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 1127923987482457014}
   - component: {fileID: 7930709083006553452}
   - component: {fileID: 6559431376446735808}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 8485147216097317330}
   - component: {fileID: 8087784088164726798}
   - component: {fileID: 306509992490213101}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
