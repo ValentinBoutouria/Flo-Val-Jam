@@ -41,9 +41,12 @@ public class finNiveau : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.transform.position = lobbySpawn.position;
-            time = GetComponent<timer>().timeElapsed;
-            tirageObjet();
+            if (isEndable==true)
+            {
+                other.transform.position = lobbySpawn.position;
+                time = GetComponent<timer>().timeElapsed;
+                tirageObjet();
+            }
         }
     }
 
