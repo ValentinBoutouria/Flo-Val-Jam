@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 353668439802097752}
   - component: {fileID: 2917367460430444823}
   - component: {fileID: 5858818807329519528}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Helmet_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7277197855777038709}
   - component: {fileID: 2201664310695953915}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: commune
   m_TagString: Armures
   m_Icon: {fileID: 0}

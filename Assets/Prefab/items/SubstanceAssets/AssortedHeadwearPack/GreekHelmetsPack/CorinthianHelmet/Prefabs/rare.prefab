@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 40589532506599491}
   - component: {fileID: 5100938317192038194}
   - component: {fileID: 868720591875025430}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rare
   m_TagString: Armures
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7907002927254724268}
   - component: {fileID: 4337522125408315907}
   - component: {fileID: 690127067400106832}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CorinthianHelmet_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 4564774475901475549}
   - component: {fileID: 5585463120070146365}
   - component: {fileID: 7413355026271177917}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CorinthianHelmet_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 127499467018364748}
   - component: {fileID: 7761906663723631215}
   - component: {fileID: 2826421775517641056}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CorinthianHelmet_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

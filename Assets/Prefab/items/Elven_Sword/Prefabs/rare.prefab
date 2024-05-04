@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 460934}
   - component: {fileID: 9586182}
   - component: {fileID: 3017950391233402200}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: rare
   m_TagString: epee
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 450670}
   - component: {fileID: 3314020}
   - component: {fileID: 2387266}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
