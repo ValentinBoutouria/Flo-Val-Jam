@@ -75,6 +75,8 @@ public class Caractéristique : MonoBehaviour
     public float lookXLimit = 60.0f;
     public Transform playerCameraParent;
 
+    private int bonusSpeed = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,7 +90,11 @@ public class Caractéristique : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        foreach (var item in equipement.EquippedStuff["Boots"])
+        {
+            bonusSpeed = 0;
+            bonusSpeed += equipement.GameStuff["Boots"][item.Key];
+        }
         DeplacementWalk();
         DeplacementRun();
 
@@ -175,10 +181,10 @@ public class Caractéristique : MonoBehaviour
     }
     void ControleSpeed() 
     {
-        if (isWalking && !isRunning && !isDashing && !isSlow) { speed = walkingSpeed; }
-        if (!isWalking && isRunning && !isDashing && !isSlow) { speed = runningSpeed; }
-        if (isDashing) { speed = dashSpeed; }
-        if (isSlow) { speed = Slowspeed; }
+        if (isWalking && !isRunning && !isDashing && !isSlow) { speed = walkingSpeed + bonusSpeed; }
+        if (!isWalking && isRunning && !isDashing && !isSlow) { speed = runningSpeed + bonusSpeed; }
+        if (isDashing) { speed = dashSpeed + bonusSpeed; }
+        if (isSlow) { speed = Slowspeed + bonusSpeed/2; }
 
 
     }
