@@ -359,7 +359,7 @@ public class Caractéristique : MonoBehaviour
         if(other.CompareTag("Trampoline"))
         {
             
-            GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce*2, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(Vector3.up * other.GetComponent<trampolineCarac>().force, ForceMode.Impulse);
         }
         if(other.CompareTag("Slow"))
         {
