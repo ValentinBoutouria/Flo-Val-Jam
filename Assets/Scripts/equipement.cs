@@ -7,7 +7,7 @@ public class Equipement : MonoBehaviour
     public Dictionary<string, Dictionary<string, int>> GameStuff;
     public Dictionary<string, Dictionary<string, int>> AvailableStuff;
     public Dictionary<string, Dictionary<string, int>> EquippedStuff;
-
+    public GameObject shelf;
 
     // Start is called before the first frame update
     void Start()
@@ -20,14 +20,20 @@ public class Equipement : MonoBehaviour
         // Créer un nouveau dictionnaire pour un type d'équipement
         Dictionary<string, int> armuresDict = new Dictionary<string, int>();
         armuresDict.Add("commune", 10);
+        armuresDict.Add("rare", 20);
+        armuresDict.Add("legendaire", 30);
+
         Dictionary<string, int> epeesDict = new Dictionary<string, int>();
         epeesDict.Add("commune", 10);
+        epeesDict.Add("rare", 20);
+        epeesDict.Add("legendaire", 30);
 
-        AvailableStuff.Add("epee", epeesDict);
 
         // Ajouter le type d'équipement au dictionnaire principal
         GameStuff.Add("Armures", armuresDict);
         GameStuff.Add("epee", epeesDict);
+        AvailableStuff.Add("Armures", new Dictionary<string, int>());
+        AvailableStuff.Add("epee", new Dictionary<string, int>());
 
     }
 
@@ -45,6 +51,18 @@ public class Equipement : MonoBehaviour
         {
             // Ajoute l'item à AvailableStuff
             AvailableStuff[equipmentType].Add(itemName, GameStuff[equipmentType][itemName]);
+            // Parcourt tous les enfants de shelf
+            for (int i = 0; i < shelf.transform.childCount; i++)
+            {
+                GameObject child = shelf.transform.GetChild(i).gameObject;
+
+                // Vérifie si le tag et le nom du fils correspondent à equipmentType et itemName
+                if (child.tag == equipmentType && child.name == itemName)
+                {
+                    // Réactive le fils
+                    child.SetActive(true);
+                }
+            }
         }
     }
 
@@ -63,6 +81,7 @@ public class Equipement : MonoBehaviour
             // Ajoute l'item à EquippedStuff
             EquippedStuff[equipmentType] = new Dictionary<string, int>();
             EquippedStuff[equipmentType].Add(itemName, AvailableStuff[equipmentType][itemName]);
+
         }
     }
 }
