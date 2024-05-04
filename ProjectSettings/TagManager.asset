@@ -9,6 +9,7 @@ TagManager:
   - Piege
   - Trampoline
   - Slow
+  - Restore
   layers:
   - Default
   - TransparentFX

@@ -12,6 +12,7 @@ public class Caractéristique : MonoBehaviour
     public float walkingSpeed = 5f;
     public float runningSpeed = 10f;
     public float dashSpeed = 20f;
+    public float Slowspeed = 1f;
     public float jumpForce = 2f;
 
     
@@ -29,6 +30,7 @@ public class Caractéristique : MonoBehaviour
     public bool isWalking;
     public bool isRunning;
     public bool isDashing;
+    public bool isSlow;
     public bool Dashable;
 
     public Animator animator;
@@ -129,9 +131,11 @@ public class Caractéristique : MonoBehaviour
     }
     void ControleSpeed() 
     {
-        if (isWalking && !isRunning && !isDashing) { speed = walkingSpeed; }
-        if (!isWalking && isRunning && !isDashing) { speed = runningSpeed; }
+        if (isWalking && !isRunning && !isDashing && !isSlow) { speed = walkingSpeed; }
+        if (!isWalking && isRunning && !isDashing && !isSlow) { speed = runningSpeed; }
         if (isDashing) { speed = dashSpeed; }
+        if (isSlow) { speed = Slowspeed; }
+
 
     }
     void ControleWalk()
@@ -246,9 +250,21 @@ public class Caractéristique : MonoBehaviour
         }
         if(other.CompareTag("Trampoline"))
         {
-            Debug.Log(other.tag);
+            
             GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce*2, ForceMode.Impulse);
         }
+        if(other.CompareTag("Slow"))
+        {
+            isSlow=true;
+            animator.SetBool("IsSlow", true);
+        }
+        if(other.CompareTag("Restore"))
+        {
+            isSlow = false;
+            animator.SetBool("IsSlow", false);
+
+        }
+
     }
 
 }
