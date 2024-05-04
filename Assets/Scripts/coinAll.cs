@@ -36,16 +36,28 @@ public class coinAll : MonoBehaviour
     }
     IEnumerator AnimateAndDestroy()
     {
-        // Double la taille de la pièce
-        transform.localScale *= 2f;
+        // Durée de l'animation
+        float growDuration = 0.6f; // Durée de l'agrandissement
+        float shrinkDuration = 0.4f; // Durée de la réduction
 
-        // Réduit la pièce à 0 plus lentement
+        // Agrandit la pièce progressivement
         float elapsedTime = 0f;
-        float duration = 1f; // Durée de l'animation
         Vector3 originalScale = transform.localScale;
-        while (elapsedTime < duration)
+        Vector3 targetScale = originalScale * 2f;
+        while (elapsedTime < growDuration)
         {
-            float t = elapsedTime / duration;
+            float t = elapsedTime / growDuration;
+            transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Réduit la pièce à 0 progressivement
+        elapsedTime = 0f;
+        originalScale = transform.localScale;
+        while (elapsedTime < shrinkDuration)
+        {
+            float t = elapsedTime / shrinkDuration;
             transform.localScale = Vector3.Lerp(originalScale, Vector3.zero, t);
             elapsedTime += Time.deltaTime;
             yield return null;
