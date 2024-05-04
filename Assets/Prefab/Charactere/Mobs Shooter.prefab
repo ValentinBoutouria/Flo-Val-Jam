@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e743faa668ddf5845be83913dfe2790c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: 1
+  PV: 10
   Degats: 0
 --- !u!114 &8462081159539019514
 MonoBehaviour:
@@ -138,7 +138,7 @@ MonoBehaviour:
   spawnpoint: {fileID: 8831068352060516391}
   compteurShoot: 1
   cooldownShoot: 1
-  ProjectileDMG: 10
+  ProjectileDMG: 100
   DistanceActivation: 20
   speedBullet: 1.5
   IsShooting: 0
