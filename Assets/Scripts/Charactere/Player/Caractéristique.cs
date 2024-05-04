@@ -20,8 +20,8 @@ public class Caractéristique : MonoBehaviour
     
     public float Degatscat = 2f;
 
-    public float compteurDegPiege = 1f;
-    public float cooldownDegPiege = 1f;
+    public float compteurDeg = 1f;
+    public float cooldownDeg = 1f;
     public float DegatsPiege = 2f;
 
     public float compteurDash = 1f;
@@ -50,6 +50,8 @@ public class Caractéristique : MonoBehaviour
 
     public TextMeshProUGUI textPV;
     public TextMeshProUGUI textGold;
+
+    public GameObject Cam;
 
     private Renderer renderer;
 
@@ -82,7 +84,7 @@ public class Caractéristique : MonoBehaviour
         ControleJump();
         ControleCompteurDash();
         ControleMat();
-        ControleCompteurDegatPiege();
+        ControleCompteurDegat();
         ControlePV();
         //ControleCompteurDegat();
 
@@ -118,7 +120,12 @@ public class Caractéristique : MonoBehaviour
         // Appliquer le mouvement
         transform.Translate(movement);
         transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Time.deltaTime * speed * 10);
-        //transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * Time.deltaTime * speed * 10);
+        if (Input.GetMouseButton(1))
+        {
+            Cam.transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * Time.deltaTime * speed*5);
+
+        }
+        
 
 
     }
@@ -219,11 +226,11 @@ public class Caractéristique : MonoBehaviour
         }   
     }
     
-    void ControleCompteurDegatPiege()
+    void ControleCompteurDegat()
     {
-        if (compteurDegPiege<cooldownDegPiege)
+        if (compteurDeg<cooldownDeg)
         { 
-            compteurDegPiege += Time.deltaTime;
+            compteurDeg += Time.deltaTime;
         }
        
     }
@@ -294,11 +301,23 @@ public class Caractéristique : MonoBehaviour
         if(other.CompareTag("Piege"))
         {
             
-            if(compteurDegPiege >= cooldownDegPiege)
+            if(compteurDeg >= cooldownDeg)
             {
-                
                 PVcat -= DegatsPiege;
+                compteurDeg = 0;
             }
+        }
+        if(other.CompareTag("Projectile"))
+        {
+            if(compteurDeg>=cooldownDeg)
+            {
+                Debug.Log("Ouch");
+                Shoot scriptShoottemp=other.GetComponentInParent<Shoot>();
+                PVcat -= scriptShoottemp.ProjectileDMG;
+                compteurDeg = 0;
+
+            }
+            Destroy(other.gameObject);
         }
 
     }

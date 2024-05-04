@@ -1027,7 +1027,7 @@ GameObject:
   - component: {fileID: 37269149009829223}
   - component: {fileID: 4224118658498202854}
   m_Layer: 0
-  m_Name: cat
+  m_Name: catMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1712,12 +1712,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60549fe30ba44ed4f814fc44f8a71fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gold: 0
   speed: 5
   walkingSpeed: 5
   runningSpeed: 10
   dashSpeed: 20
+  Slowspeed: 1
   jumpForce: 6
   Degatscat: 2
+  compteurDegPiege: 1
+  cooldownDegPiege: 1
+  DegatsPiege: 2
   compteurDash: 1
   cooldownDash: 4
   DureeDash: 0.4
@@ -1728,11 +1733,16 @@ MonoBehaviour:
   isWalking: 0
   isRunning: 0
   isDashing: 1
+  isSlow: 0
   Dashable: 0
   animator: {fileID: 232710321136307146}
   cdDash: {fileID: 0}
+  Pv: {fileID: 0}
   CatMat: {fileID: 2100000, guid: 47090793e93c4c948b61cbd5422d34cd, type: 2}
   DashMat: {fileID: 2100000, guid: cc708c60d9b13204882dd37ea028ccab, type: 2}
+  textPV: {fileID: 0}
+  textGold: {fileID: 0}
+  Cam: {fileID: 0}
 --- !u!54 &4382820754125908321
 Rigidbody:
   m_ObjectHideFlags: 0
