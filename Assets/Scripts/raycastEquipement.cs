@@ -10,8 +10,8 @@ public class raycastEquipement : MonoBehaviour
     public TextMeshProUGUI textMeshPro; // Référence au TextMeshPro
     public Equipement equipement; // Référence au script Equipement
 
-    private string currentTag;
-    private string currentName;
+    public string currentTag;
+    public string currentName;
 
     void Update()
     {
