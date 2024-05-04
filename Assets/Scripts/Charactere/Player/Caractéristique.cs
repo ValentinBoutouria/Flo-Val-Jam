@@ -122,7 +122,7 @@ public class Caractéristique : MonoBehaviour
         // Appliquer le mouvement
         transform.Translate(movement);
         transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Time.deltaTime * speed * 10);
-            Cam.transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * Time.deltaTime * speed*5);
+            Cam.transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * Time.deltaTime * speed);
         if (Input.GetMouseButton(1))
         {
 
