@@ -9,6 +9,7 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 public class Caractéristique : MonoBehaviour
 
 {
+    public int gold = 0;
     public float speed = 5f;
     public float walkingSpeed = 5f;
     public float runningSpeed = 10f;
@@ -48,6 +49,7 @@ public class Caractéristique : MonoBehaviour
     public Material DashMat;
 
     public TextMeshProUGUI textPV;
+    public TextMeshProUGUI textGold;
 
     private Renderer renderer;
 
@@ -86,6 +88,7 @@ public class Caractéristique : MonoBehaviour
 
         UIDash();
         UIPV();
+        UIGold();
 
         DureeDashingIncrem();
 
@@ -251,6 +254,10 @@ public class Caractéristique : MonoBehaviour
         Pv.fillAmount = PVcat/PVcatMax;
 
     }
+    void UIGold()
+    {
+        textGold.text = "Gold : " + gold;
+    }
     void ControlePV()
     {
         textPV.text = "" + PVcat;
@@ -286,10 +293,10 @@ public class Caractéristique : MonoBehaviour
         }
         if(other.CompareTag("Piege"))
         {
-            Debug.Log("test");
+            
             if(compteurDegPiege >= cooldownDegPiege)
             {
-                Debug.Log("Ouch");
+                
                 PVcat -= DegatsPiege;
             }
         }
