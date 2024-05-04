@@ -3230,11 +3230,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4230334152270423020, guid: 1ae136d6dda92b243a5d3a5df6121d25, type: 3}
   m_PrefabInstance: {fileID: 1564392212}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1571609742 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7493182791967681585, guid: 55251e7d92f7107488cfe71ed461c8c7, type: 3}
-  m_PrefabInstance: {fileID: 2647791317121098748}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1600117120
 GameObject:
   m_ObjectHideFlags: 0
@@ -5563,7 +5558,7 @@ PrefabInstance:
     - target: {fileID: 3493658628937621611, guid: d8b0b3f141cfabb41b4357ee17d7b781, type: 3}
       propertyPath: shelf
       value: 
-      objectReference: {fileID: 1571609742}
+      objectReference: {fileID: 7493182791967681585, guid: f9678871c7ea8914e89320e4bcf43382, type: 3}
     - target: {fileID: 4364389571424924051, guid: d8b0b3f141cfabb41b4357ee17d7b781, type: 3}
       propertyPath: Pv
       value: 
@@ -5588,6 +5583,10 @@ PrefabInstance:
       propertyPath: textStuff
       value: 
       objectReference: {fileID: 1936883627}
+    - target: {fileID: 4364389571424924051, guid: d8b0b3f141cfabb41b4357ee17d7b781, type: 3}
+      propertyPath: DegatsPiege
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4382820754125908321, guid: d8b0b3f141cfabb41b4357ee17d7b781, type: 3}
       propertyPath: m_Drag
       value: 0
