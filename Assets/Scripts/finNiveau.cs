@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -14,30 +15,34 @@ public class finNiveau : MonoBehaviour
     public Transform lobbySpawn;
     private GameObject ListeMob;
     public bool isEndable;
+    private tempsLevel tempsLevel;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        tempsLevel = GameObject.FindWithTag("levelTime").GetComponent<tempsLevel>();
+
         isEndable = false;
         eq = GameObject.Find("GestionEquipement").GetComponent<Equipement>();
         GameStuff = eq.GameStuff;
-        foreach (Transform child in this.transform.parent)
-        {
-            if (child.gameObject.tag == "ListeMob")
-            {
-                ListeMob = child.gameObject;
-                break;
-            }
-        }
+        ListeMob = GameObject.FindGameObjectWithTag("ListeMob");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(ListeMob.transform.childCount == 0)
+        // Par défaut, on suppose que tous les enfants sont désactivés
+        isEndable = true;
+
+        // Parcourt tous les enfants de ListeMob
+        foreach (Transform child in ListeMob.transform)
         {
-            isEndable = true;
+            // Si un enfant est activé, isEndable devient false et on arrête la boucle
+            if (child.gameObject.activeSelf)
+            {
+                isEndable = false;
+                break;
+            }
         }
     }
 
@@ -62,46 +67,86 @@ public class finNiveau : MonoBehaviour
 
     private void tirageObjet()
     {
-        // Sélectionne une clé aléatoire dans GameStuff
+        // Selectionne une cle aleatoire dans GameStuff
         List<string> keys = new List<string>(GameStuff.Keys);
         string randomKey = keys[Random.Range(0, keys.Count)];
 
-        // Obtient le sous-dictionnaire pour la clé sélectionnée
+        // Obtient le sous-dictionnaire pour la cle selectionnee
         Dictionary<string, int> subDict = GameStuff[randomKey];
 
-        // Calcule la probabilité en fonction du temps
-        float prob = Mathf.Clamp((objectiveTime - time) / objectiveTime, 0f, 1f);
-
-        // Sélectionne une clé dans le sous-dictionnaire en fonction de la probabilité
-        string selectedKey;
-        float randomValue = Random.Range(0f, 1f);
-        if (randomValue < prob / 3f)
+        // Calcule le nombre d'etoiles en fonction du temps
+        string etoiles;
+        if (time <= tempsLevel.tempsMax3Etoiles)
         {
-            // Probabilité la plus faible : "legendaire"
-            selectedKey = "legendaire";
+            etoiles = "3 etoiles";
         }
-        else if (randomValue < prob * 2f / 3f)
+        else if (time <= tempsLevel.tempsMax2Etoiles)
         {
-            // Probabilité moyenne : "rare"
-            selectedKey = "rare";
+            etoiles = "2 etoiles";
+        }
+        else if (time <= tempsLevel.tempsMax1Etoile)
+        {
+            etoiles = "1 etoile";
         }
         else
         {
-            // Probabilité la plus élevée : "commune"
-            selectedKey = "commune";
+            etoiles = "0 etoiles";
         }
 
-        // Vérifie si la clé sélectionnée existe dans le sous-dictionnaire
+        // Definit les probabilites pour chaque etoile
+        Dictionary<string, float> probabilites = new Dictionary<string, float>();
+        switch (etoiles)
+        {
+            case "0 etoiles":
+                probabilites = new Dictionary<string, float> { { "Legendaire", 0f }, { "Rare", 0.1f }, { "Commune", 0.9f } };
+                break;
+            case "1 etoile":
+                probabilites = new Dictionary<string, float> { { "Legendaire", 0f }, { "Rare", 0.25f }, { "Commune", 0.75f } };
+                break;
+            case "2 etoiles":
+                probabilites = new Dictionary<string, float> { { "Legendaire", 0.05f }, { "Rare", 0.35f }, { "Commune", 0.6f } };
+                break;
+            case "3 etoiles":
+                probabilites = new Dictionary<string, float> { { "Legendaire", 0.1f }, { "Rare", 0.45f }, { "Commune", 0.45f } };
+                break;
+        }
+
+        // Selectionne une cle dans le sous-dictionnaire en fonction des probabilites
+        string selectedKey = SelectKeyBasedOnProbability(probabilites);
+
+        // Verifie si la cle selectionnee existe dans le sous-dictionnaire
         if (subDict.ContainsKey(selectedKey))
         {
-            // Affiche la clé et la valeur sélectionnées
-
-            // Ajoute l'item à AvailableStuff
+            // Ajoute l'item a AvailableStuff
             eq.UnlockItem(randomKey, selectedKey);
         }
         else
         {
-            Debug.Log("La clé " + selectedKey + " n'existe pas dans le sous-dictionnaire pour la clé " + randomKey);
+            Debug.Log("La cle " + selectedKey + " n'existe pas dans le sous-dictionnaire pour la cle " + randomKey);
         }
+    }
+
+    private string SelectKeyBasedOnProbability(Dictionary<string, float> probabilities)
+    {
+        float total = 0;
+        foreach (float value in probabilities.Values)
+        {
+            total += value;
+        }
+
+        float randomPoint = Random.value * total;
+
+        foreach (KeyValuePair<string, float> entry in probabilities)
+        {
+            if (randomPoint < entry.Value)
+            {
+                return entry.Key;
+            }
+            else
+            {
+                randomPoint -= entry.Value;
+            }
+        }
+        return probabilities.Keys.Last();
     }
 }
