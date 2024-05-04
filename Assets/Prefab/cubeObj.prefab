@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8155147595247986472}
   - component: {fileID: 7944213831774436859}
   - component: {fileID: 32965703958597763}
+  - component: {fileID: 1820480572766596917}
   m_Layer: 0
   m_Name: cubeObj
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 0}
+  timeElapsed: 0
 --- !u!135 &7944213831774436859
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -82,6 +84,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d96cc471db23ef54590869bd9dcf10bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  eq: {fileID: 0}
+  objectiveTime: 10
+  lobbySpawn: {fileID: 0}
+--- !u!114 &1820480572766596917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122711361288100689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40eb69dda5863543895e72634595e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &461545137111320670
