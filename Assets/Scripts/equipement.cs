@@ -60,7 +60,7 @@ public class Equipement : MonoBehaviour
     public void EquipItem(string equipmentType, string itemName)
     {
         // Vérifie si l'item existe dans GameStuff et AvailableStuff
-        if (AvailableStuff.ContainsKey(equipmentType) && AvailableStuff[equipmentType].ContainsKey(itemName))
+        if (AvailableStuff[equipmentType].ContainsKey(itemName))
         {
             // Si l'item est déjà équipé, le retire
             if (EquippedStuff.ContainsKey(equipmentType))
@@ -71,7 +71,6 @@ public class Equipement : MonoBehaviour
             // Ajoute l'item à EquippedStuff
             EquippedStuff[equipmentType] = new Dictionary<string, int>();
             EquippedStuff[equipmentType].Add(itemName, AvailableStuff[equipmentType][itemName]);
-
         }
     }
 
@@ -86,16 +85,16 @@ public class Equipement : MonoBehaviour
         // Créer un nouveau dictionnaire pour un type d'équipement
         Dictionary<string, int> armuresDict = new Dictionary<string, int>
         {
-            { "commune", 10 },
-            { "rare", 20 },
-            { "legendaire", 30 }
+            { "commune", 10},
+            { "rare", 30 },
+            { "legendaire", 60 }
         };
 
         Dictionary<string, int> epeesDict = new Dictionary<string, int>
         {
             { "commune", 10 },
-            { "rare", 20 },
-            { "legendaire", 30 }
+            { "rare", 30 },
+            { "legendaire", 60 }
         };
 
 
