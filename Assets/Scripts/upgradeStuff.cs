@@ -65,6 +65,12 @@ public class upgradeStuff : MonoBehaviour
                         textMeshPro.text = "Vous devez avoir cet équipement en " + equipement.nombrePossede_necessaire[equipmentType.Key][item.Key].Item2 + " pour pouvoir l'améliorer, et cette action vous coûtera " + equipement.coutUpgrade[equipmentType.Key][item.Key] + " gold";
                     }
                 }
+                else
+                {
+                    Debug.Log("BBBBBBBBBBBBBBBB");
+                    // Efface le texte du TextMeshPro
+                    textMeshPro.text = "";
+                }
             }
         }
 
