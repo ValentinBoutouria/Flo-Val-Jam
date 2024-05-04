@@ -9,9 +9,11 @@ public class timer : MonoBehaviour
     private float startTime; // Temps de départ
     private bool isRunning = false; // Indique si le timer est en cours d'exécution
     public float timeElapsed; // Temps écoulé
+    private finNiveau _finNiveau;
 
     void OnEnable()
     {
+        _finNiveau = GetComponent<finNiveau>();
         // Démarre le timer lorsque le script est activé
         startTime = Time.time;
         isRunning = true;
@@ -29,8 +31,12 @@ public class timer : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if(_finNiveau.isEndable)
+        {
+
         // Arrête le timer lorsque un objet entre dans le trigger
         isRunning = false;
         this.transform.parent.gameObject.SetActive(false);
+        }
     }
 }
