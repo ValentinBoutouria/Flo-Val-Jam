@@ -12,6 +12,7 @@ TagManager:
   - Restore
   - Armures
   - Projectile
+  - Teleporteur
   layers:
   - Default
   - TransparentFX
