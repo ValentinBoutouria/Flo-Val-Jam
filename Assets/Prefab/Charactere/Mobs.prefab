@@ -118,5 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e743faa668ddf5845be83913dfe2790c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: 5
-  Degats: 20
+  PV: 50
+  Degats: 200
