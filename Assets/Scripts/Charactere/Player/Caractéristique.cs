@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+using Unity.VisualScripting;
 
 public class Caractéristique : MonoBehaviour
 
@@ -19,6 +20,7 @@ public class Caractéristique : MonoBehaviour
 
     
     public float Degatscat = 2f;
+    public float dgtEquipement = 0f;
 
     public float compteurDeg = 1f;
     public float cooldownDeg = 1f;
@@ -31,6 +33,8 @@ public class Caractéristique : MonoBehaviour
 
     public float PVcat = 100f;
     private float PVcatMax = 100f;
+
+    public float armure = 0f;
 
     public bool isGrounded;
     public bool isSit;
@@ -49,6 +53,7 @@ public class Caractéristique : MonoBehaviour
     public Material DashMat;
 
     public TextMeshProUGUI textPV;
+    public TextMeshProUGUI textStuff;
     public TextMeshProUGUI textGold;
 
     public GameObject Cam;
@@ -58,8 +63,9 @@ public class Caractéristique : MonoBehaviour
 
     Rigidbody rb;
 
-   // private Rigidbody rb;
+    // private Rigidbody rb;
 
+    Equipement equipement; 
 
 
     // Start is called before the first frame update
@@ -68,7 +74,7 @@ public class Caractéristique : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         renderer = GetComponentInChildren<Renderer>();
         Cursor.visible = false;
-
+        equipement = GameObject.Find("GestionEquipement").GetComponent<Equipement>();
 
     }
 
@@ -93,6 +99,7 @@ public class Caractéristique : MonoBehaviour
         UIDash();
         UIPV();
         UIGold();
+        UIStuff();
 
         DureeDashingIncrem();
 
@@ -267,6 +274,21 @@ public class Caractéristique : MonoBehaviour
     {
         textGold.text = "Gold : " + gold;
     }
+
+    void UIStuff()
+    {
+        armure = 0;
+        dgtEquipement = 0;
+        foreach (var item in equipement.EquippedStuff["Armures"])
+        {
+            armure += equipement.GameStuff["Armures"][item.Key];
+        }
+        foreach (var item in equipement.EquippedStuff["epee"])
+        {
+            dgtEquipement += equipement.GameStuff["epee"][item.Key];
+        }
+        textStuff.text = "Armure : " + armure + "\n Bonus dégats : " + dgtEquipement;
+    }
     void ControlePV()
     {
         textPV.text = "" + PVcat;
@@ -285,7 +307,7 @@ public class Caractéristique : MonoBehaviour
             CaractéristiqueMob caracmobtemp=other.GetComponent<CaractéristiqueMob>();
                 if(isDashing)
                 {
-                    caracmobtemp.PV -= Degatscat;  
+                    caracmobtemp.PV -= Degatscat+dgtEquipement;  
                 }
                 else
                 {
@@ -312,7 +334,7 @@ public class Caractéristique : MonoBehaviour
             
             if(compteurDeg >= cooldownDeg)
             {
-                PVcat -= DegatsPiege;
+                PVcat -= DegatsPiege-armure;
                 compteurDeg = 0;
             }
         }
