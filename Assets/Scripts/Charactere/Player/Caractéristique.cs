@@ -216,7 +216,7 @@ public class Caractéristique : MonoBehaviour
     {
         if (Dashable)
         {
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButtonDown(1))
             {
                 DureeDashing = 0;
                 compteurDash = 0;
