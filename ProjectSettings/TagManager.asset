@@ -15,6 +15,7 @@ TagManager:
   - Teleporteur
   - ListeMob
   - Boots
+  - levelTime
   layers:
   - Default
   - TransparentFX
