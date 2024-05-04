@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class Caractéristique : MonoBehaviour
@@ -28,6 +29,7 @@ public class Caractéristique : MonoBehaviour
     public float DureeDashing = 1f;
 
     public float PVcat = 100f;
+    private float PVcatMax = 100f;
 
     public bool isGrounded;
     public bool isSit;
@@ -40,9 +42,12 @@ public class Caractéristique : MonoBehaviour
     public Animator animator;
 
     public Image cdDash;
+    public Image Pv;
 
     public Material CatMat;
     public Material DashMat;
+
+    public TextMeshProUGUI textPV;
 
     private Renderer renderer;
 
@@ -76,9 +81,11 @@ public class Caractéristique : MonoBehaviour
         ControleCompteurDash();
         ControleMat();
         ControleCompteurDegatPiege();
+        ControlePV();
         //ControleCompteurDegat();
 
         UIDash();
+        UIPV();
 
         DureeDashingIncrem();
 
@@ -238,6 +245,15 @@ public class Caractéristique : MonoBehaviour
     {
         cdDash.fillAmount = compteurDash/cooldownDash;
 
+    }
+    void UIPV()
+    {
+        Pv.fillAmount = PVcat/PVcatMax;
+
+    }
+    void ControlePV()
+    {
+        textPV.text = "" + PVcat;
     }
     private void OnTriggerEnter(Collider other)
     {
