@@ -1803,7 +1803,7 @@ MonoBehaviour:
   dgtEquipement: 0
   compteurDeg: 1
   cooldownDeg: 1
-  DegatsPiege: 2
+  DegatsPiege: 20
   compteurDash: 1
   cooldownDash: 4
   DureeDash: 0.4
