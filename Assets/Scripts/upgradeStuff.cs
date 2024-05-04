@@ -67,7 +67,7 @@ public class upgradeStuff : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("BBBBBBBBBBBBBBBB");
+                    //Debug.Log("BBBBBBBBBBBBBBBB");
                     // Efface le texte du TextMeshPro
                     textMeshPro.text = "";
                 }
@@ -85,7 +85,7 @@ public class upgradeStuff : MonoBehaviour
         {
             foreach (var item in equipmentType.Value)
             {
-                infoText += equipmentType.Key + "-" + item.Key + " : " + item.Value.Item1 + " / " + item.Value.Item2;
+                infoText += equipmentType.Key + "-" + item.Key + " : " + item.Value.Item1 + " / " + item.Value.Item2+"\n";
             }
         }
 
