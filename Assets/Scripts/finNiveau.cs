@@ -98,16 +98,16 @@ public class finNiveau : MonoBehaviour
         switch (etoiles)
         {
             case "0 etoiles":
-                probabilites = new Dictionary<string, float> { { "Legendaire", 0f }, { "Rare", 0.1f }, { "Commune", 0.9f } };
+                probabilites = new Dictionary<string, float> { { "legendaire", 0f }, { "rare", 0.1f }, { "commune", 0.9f } };
                 break;
             case "1 etoile":
-                probabilites = new Dictionary<string, float> { { "Legendaire", 0f }, { "Rare", 0.25f }, { "Commune", 0.75f } };
+                probabilites = new Dictionary<string, float> { { "legendaire", 0f }, { "rare", 0.25f }, { "commune", 0.75f } };
                 break;
             case "2 etoiles":
-                probabilites = new Dictionary<string, float> { { "Legendaire", 0.05f }, { "Rare", 0.35f }, { "Commune", 0.6f } };
+                probabilites = new Dictionary<string, float> { { "legendaire", 0.05f }, { "rare", 0.35f }, { "commune", 0.6f } };
                 break;
             case "3 etoiles":
-                probabilites = new Dictionary<string, float> { { "Legendaire", 0.1f }, { "Rare", 0.45f }, { "Commune", 0.45f } };
+                probabilites = new Dictionary<string, float> { { "legendaire", 0.1f }, { "rare", 0.45f }, { "commune", 0.45f } };
                 break;
         }
 
