@@ -57,6 +57,7 @@ public class Equipement : MonoBehaviour
                 GameObject child = shelf.transform.GetChild(i).gameObject;
 
                 // Vérifie si le tag et le nom du fils correspondent à equipmentType et itemName
+                Debug.Log(equipmentType + itemName + "     -----------    " + child.tag + child.name);
                 if (child.tag == equipmentType && child.name == itemName)
                 {
                     // Réactive le fils

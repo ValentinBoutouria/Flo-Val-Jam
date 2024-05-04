@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4417530817065136}
   - component: {fileID: 33241488102382690}
   - component: {fileID: 23490559892862816}
+  - component: {fileID: 8311680439869287469}
   m_Layer: 0
   m_Name: legendaire
   m_TagString: epee
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8311680439869287469
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777591198242490}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6666183, y: 0.13720748, z: 2.668247}
+  m_Center: {x: -0.00003754141, y: 0.000121777215, z: 1.0216013}
