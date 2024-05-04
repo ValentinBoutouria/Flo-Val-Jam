@@ -75,6 +75,7 @@ public class Caractéristique : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         DeplacementWalk();
         DeplacementRun();
 
@@ -86,6 +87,7 @@ public class Caractéristique : MonoBehaviour
         ControleMat();
         ControleCompteurDegat();
         ControlePV();
+        ControleChute();
         //ControleCompteurDegat();
 
         UIDash();
@@ -120,9 +122,9 @@ public class Caractéristique : MonoBehaviour
         // Appliquer le mouvement
         transform.Translate(movement);
         transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * Time.deltaTime * speed * 10);
+            Cam.transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * Time.deltaTime * speed*5);
         if (Input.GetMouseButton(1))
         {
-            Cam.transform.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * Time.deltaTime * speed*5);
 
         }
         
@@ -269,6 +271,13 @@ public class Caractéristique : MonoBehaviour
     {
         textPV.text = "" + PVcat;
     }
+    void ControleChute()
+    {
+        if(this.transform.position.y < -25) 
+        { 
+            this.transform.position = Vector3.zero;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Mob"))
@@ -318,6 +327,12 @@ public class Caractéristique : MonoBehaviour
 
             }
             Destroy(other.gameObject);
+        }
+        if(other.CompareTag("Teleporteur"))
+            {
+            TPVal Tpniveautemp= other.GetComponent<TPVal>();
+            this.transform.position=Tpniveautemp.SpawnPoint.transform.position;
+            this.transform.rotation=Tpniveautemp.SpawnPoint.transform.rotation;
         }
 
     }
