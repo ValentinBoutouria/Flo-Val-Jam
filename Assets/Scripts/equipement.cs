@@ -23,6 +23,7 @@ public class Equipement : MonoBehaviour
         Dictionary<string, int> epeesDict = new Dictionary<string, int>();
         epeesDict.Add("commune", 10);
 
+        AvailableStuff.Add("epee", epeesDict);
 
         // Ajouter le type d'équipement au dictionnaire principal
         GameStuff.Add("Armures", armuresDict);
