@@ -175,10 +175,10 @@ public class Caractéristique : MonoBehaviour
     }
     void ControleSpeed() 
     {
-        if (isWalking && !isRunning && !isDashing && !isSlow) { speed = walkingSpeed/10; }
-        if (!isWalking && isRunning && !isDashing && !isSlow) { speed = runningSpeed/10; }
-        if (isDashing) { speed = dashSpeed/10; }
-        if (isSlow) { speed = Slowspeed/10; }
+        if (isWalking && !isRunning && !isDashing && !isSlow) { speed = walkingSpeed; }
+        if (!isWalking && isRunning && !isDashing && !isSlow) { speed = runningSpeed; }
+        if (isDashing) { speed = dashSpeed; }
+        if (isSlow) { speed = Slowspeed; }
 
 
     }
