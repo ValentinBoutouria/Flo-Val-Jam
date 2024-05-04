@@ -96,15 +96,25 @@ public class Equipement : MonoBehaviour
             { "rare", 30 },
             { "legendaire", 60 }
         };
+        Dictionary<string, int> bootsDict = new Dictionary<string, int>
+        {
+            { "commune", 3 },
+            { "rare", 6 },
+            { "legendaire", 9 }
+        };
 
 
         // Ajouter le type d'équipement au dictionnaire principal
         GameStuff.Add("Armures", armuresDict);
         GameStuff.Add("epee", epeesDict);
+        GameStuff.Add("Boots", bootsDict);
+
         AvailableStuff.Add("Armures", new Dictionary<string, int>());
         AvailableStuff.Add("epee", new Dictionary<string, int>());
+        AvailableStuff.Add("Boots", new Dictionary<string, int>());
         EquippedStuff.Add("Armures", new Dictionary<string, int>());
         EquippedStuff.Add("epee", new Dictionary<string, int>());
+        EquippedStuff.Add("Boots", new Dictionary<string, int>());
 
     }
     private void initUpgrade()
