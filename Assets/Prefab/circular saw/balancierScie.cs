@@ -17,6 +17,7 @@ public class balancierScie : MonoBehaviour
         {
             childTransform = transform.GetChild(0);
         }
+        
         transform.Rotate(-amplitude / 2, 0, 0);
     }
 
