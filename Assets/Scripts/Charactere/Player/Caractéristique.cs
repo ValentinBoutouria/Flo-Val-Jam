@@ -216,7 +216,7 @@ public class Caractéristique : MonoBehaviour
     {
         if (Dashable)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && !isGrounded)
+            if (Input.GetMouseButton(1))
             {
                 DureeDashing = 0;
                 compteurDash = 0;
