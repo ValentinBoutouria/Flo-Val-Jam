@@ -104,6 +104,9 @@ public class Equipement : MonoBehaviour
         GameStuff.Add("epee", epeesDict);
         AvailableStuff.Add("Armures", new Dictionary<string, int>());
         AvailableStuff.Add("epee", new Dictionary<string, int>());
+        EquippedStuff.Add("Armures", new Dictionary<string, int>());
+        EquippedStuff.Add("epee", new Dictionary<string, int>());
+
     }
     private void initUpgrade()
     {
