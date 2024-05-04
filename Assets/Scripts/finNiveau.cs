@@ -27,7 +27,6 @@ public class finNiveau : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Fin du niveau");
             other.transform.position = lobbySpawn.position;
             time = GetComponent<timer>().timeElapsed;
             tirageObjet();
@@ -69,7 +68,6 @@ public class finNiveau : MonoBehaviour
         if (subDict.ContainsKey(selectedKey))
         {
             // Affiche la clé et la valeur sélectionnées
-            Debug.Log("Clé sélectionnée: " + randomKey + ", Sous-clé: " + selectedKey + ", Valeur: " + subDict[selectedKey]);
 
             // Ajoute l'item à AvailableStuff
             eq.UnlockItem(randomKey, selectedKey);

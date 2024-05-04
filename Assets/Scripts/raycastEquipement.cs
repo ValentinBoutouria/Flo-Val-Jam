@@ -63,7 +63,6 @@ public class raycastEquipement : MonoBehaviour
             {
                 if(currentName!=null)
                 {
-                    Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAA");
                     if (equipement.EquippedStuff.ContainsKey(currentTag) && equipement.EquippedStuff[currentTag].ContainsKey(currentName))
                     {
                         equipement.EquippedStuff[currentTag].Remove(currentName);

@@ -6,11 +6,11 @@ TagManager:
   tags:
   - epee
   - Mob
-  - Armure
   - Piege
   - Trampoline
   - Slow
   - Restore
+  - Armures
   layers:
   - Default
   - TransparentFX
