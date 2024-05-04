@@ -90,10 +90,12 @@ public class Caractéristique : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bonusSpeed = 0;
         foreach (var item in equipement.EquippedStuff["Boots"])
         {
-            bonusSpeed = 0;
+            Debug.Log(item.Key);
             bonusSpeed += equipement.GameStuff["Boots"][item.Key];
+            break;
         }
         DeplacementWalk();
         DeplacementRun();
