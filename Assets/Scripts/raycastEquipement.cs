@@ -57,16 +57,25 @@ public class raycastEquipement : MonoBehaviour
         }
 
         // Si le joueur appuie sur E, équipe ou déséquipe l'épée
-        if (Input.GetKeyDown(KeyCode.E) && currentTag != null && currentName != null)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (equipement.EquippedStuff.ContainsKey(currentTag) && equipement.EquippedStuff[currentTag].ContainsKey(currentName))
+            if(currentTag!=null)
             {
-                equipement.EquippedStuff[currentTag].Remove(currentName);
+                if(currentName!=null)
+                {
+                    Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAA");
+                    if (equipement.EquippedStuff.ContainsKey(currentTag) && equipement.EquippedStuff[currentTag].ContainsKey(currentName))
+                    {
+                        equipement.EquippedStuff[currentTag].Remove(currentName);
+                    }
+                    else
+                    {
+                        equipement.EquipItem(currentTag, currentName);
+                    }
+                }
+
             }
-            else
-            {
-                equipement.EquipItem(currentTag, currentName);
-            }
+
         }
     }
  
