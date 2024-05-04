@@ -334,7 +334,7 @@ public class Caractéristique : MonoBehaviour
             
             if(compteurDeg >= cooldownDeg)
             {
-                PVcat -= DegatsPiege;
+                PVcat -= DegatsPiege-armure;
                 compteurDeg = 0;
             }
         }
