@@ -6,6 +6,7 @@ public class TPVal : MonoBehaviour
 {
     public GameObject SpawnPoint;
     public GameObject FinNiveauObj;
+    public GameObject lvl;
     // Start is called before the first frame update
     void Start()
     {

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 using Unity.VisualScripting;
+using UnityEditor.TestTools.CodeCoverage;
 
 public class Caractéristique : MonoBehaviour
 
@@ -31,8 +32,8 @@ public class Caractéristique : MonoBehaviour
     public float DureeDash = 1f;
     public float DureeDashing = 1f;
 
-    public float PVcat = 100f;
-    private float PVcatMax = 100f;
+    public float PVcat = 1000f;
+    private float PVcatMax = 1000f;
 
     public float armure = 0f;
 
@@ -42,6 +43,7 @@ public class Caractéristique : MonoBehaviour
     public bool isRunning;
     public bool isDashing;
     public bool isSlow;
+    public bool isDead;
     public bool Dashable;
 
     public Animator animator;
@@ -94,6 +96,7 @@ public class Caractéristique : MonoBehaviour
         ControleCompteurDegat();
         ControlePV();
         ControleChute();
+        ControleMort();
         //ControleCompteurDegat();
 
         UIDash();
@@ -296,8 +299,32 @@ public class Caractéristique : MonoBehaviour
     void ControleChute()
     {
         if(this.transform.position.y < -25) 
+        {
+            PVcat = 0;
+        }
+    }
+    void ControleMort()
+    {
+        if(PVcat<=0)
+        {
+            if(isDead==false) 
+            {
+                isDead=true;
+            }
+        }
+        else
+        {
+            if (isDead == true)
+            {
+                isDead = false;
+            }
+
+        }
+        if(isDead == true) 
         { 
-            this.transform.position = Vector3.zero;
+            this.transform.position= Vector3.zero;
+            PVcat = PVcatMax;
+            isDead = false;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -353,6 +380,7 @@ public class Caractéristique : MonoBehaviour
         if(other.CompareTag("Teleporteur"))
             {
             TPVal Tpniveautemp= other.GetComponent<TPVal>();
+            Tpniveautemp.lvl.gameObject.SetActive(true);
             this.transform.position=Tpniveautemp.SpawnPoint.transform.position;
             this.transform.rotation=Tpniveautemp.SpawnPoint.transform.rotation;
         }

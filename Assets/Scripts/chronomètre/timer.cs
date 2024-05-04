@@ -31,5 +31,6 @@ public class timer : MonoBehaviour
     {
         // Arrête le timer lorsque un objet entre dans le trigger
         isRunning = false;
+        this.transform.parent.gameObject.SetActive(false);
     }
 }
