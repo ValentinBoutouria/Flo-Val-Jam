@@ -331,8 +331,12 @@ public class Caractéristique : MonoBehaviour
 
         }
         if(isDead == true) 
-        { 
-            LvlListe.gameObject.SetActive(false);
+        {
+            foreach (Transform child in LvlListe.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+           // LvlListe.gameObject.SetActive(false);
             this.transform.position= Vector3.zero;
             PVcat = PVcatMax;
             isDead = false;
