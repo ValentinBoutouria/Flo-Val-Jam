@@ -16,10 +16,12 @@ public class finNiveau : MonoBehaviour
     private GameObject ListeMob;
     public bool isEndable;
     private tempsLevel tempsLevel;
+    public TMP_Text EtoilesText;
 
     // Start is called before the first frame update
     void Start()
     {
+        EtoilesText = GameObject.FindGameObjectWithTag("texteEtoile").GetComponent<TMP_Text>();
         tempsLevel = GameObject.FindWithTag("levelTime").GetComponent<tempsLevel>();
 
         isEndable = false;
@@ -103,6 +105,7 @@ public class finNiveau : MonoBehaviour
         {
             etoiles = "0 etoiles";
         }
+        EtoilesText.text = "Niveau terminé avec " + etoiles + " ! \n";
 
         // Definit les probabilites pour chaque etoile
         Dictionary<string, float> probabilites = new Dictionary<string, float>();
@@ -124,6 +127,7 @@ public class finNiveau : MonoBehaviour
 
         // Selectionne une cle dans le sous-dictionnaire en fonction des probabilites
         string selectedKey = SelectKeyBasedOnProbability(probabilites);
+        EtoilesText.text += "Objet obtenu : " + randomKey + " " + selectedKey + "\n";
 
         // Verifie si la cle selectionnee existe dans le sous-dictionnaire
         if (subDict.ContainsKey(selectedKey))

@@ -79,7 +79,7 @@ public class Equipement : MonoBehaviour
             EquippedStuff[equipmentType].Add(itemName, AvailableStuff[equipmentType][itemName]);
             int index = selectIndex(equipmentType, itemName);
             emptyUI.transform.GetChild(0).Find(equipmentType).GetComponent<RawImage>().texture = icones[index];
-            emptyUI.transform.GetChild(1).Find(equipmentType).GetComponent<TMP_Text>().text = equipmentType + "\n" + itemName + " :\n" + GameStuff[equipmentType][itemName];
+            emptyUI.transform.GetChild(1).Find(equipmentType).GetComponent<TMP_Text>().text = equipmentType + "\n" + itemName + " :\n" + EquippedStuff[equipmentType][itemName];
         }
     }
 
