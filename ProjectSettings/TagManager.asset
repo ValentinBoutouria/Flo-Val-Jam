@@ -16,6 +16,7 @@ TagManager:
   - ListeMob
   - Boots
   - levelTime
+  - texteEtoile
   layers:
   - Default
   - TransparentFX
