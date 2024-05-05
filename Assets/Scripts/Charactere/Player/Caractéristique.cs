@@ -93,7 +93,6 @@ public class Caractéristique : MonoBehaviour
         bonusSpeed = 0;
         foreach (var item in equipement.EquippedStuff["Boots"])
         {
-            Debug.Log(item.Key);
             bonusSpeed += equipement.GameStuff["Boots"][item.Key];
             break;
         }

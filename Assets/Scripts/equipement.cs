@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Equipement : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class Equipement : MonoBehaviour
     public Dictionary<string, Dictionary<string, (int, int)>> nombrePossede_necessaire;
     public Dictionary<string, Dictionary<string, int>> coutUpgrade;
     public GameObject shelf;
+    public List<Texture> icones = new List<Texture>();
+    public GameObject emptyUI;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +75,9 @@ public class Equipement : MonoBehaviour
             // Ajoute l'item à EquippedStuff
             EquippedStuff[equipmentType] = new Dictionary<string, int>();
             EquippedStuff[equipmentType].Add(itemName, AvailableStuff[equipmentType][itemName]);
+            int index = selectIndex(equipmentType, itemName);
+            emptyUI.transform.GetChild(0).Find(equipmentType).GetComponent<RawImage>().texture = icones[index];
+            emptyUI.transform.GetChild(1).Find(equipmentType).GetComponent<TMP_Text>().text = equipmentType + "\n" + itemName + " :\n" + GameStuff[equipmentType][itemName];
         }
     }
 
@@ -145,5 +152,35 @@ public class Equipement : MonoBehaviour
                 }
             }
         }
+    }
+
+    private int selectIndex(string equipmentType, string itemName)
+    {
+        int index = 0;
+        switch (equipmentType)
+        {
+            case "Armures":
+                index = 3;
+                break;
+            case "epee":
+                index = 6;
+                break;
+            case "Boots":
+                index = 0;
+                break;
+        }
+        switch (itemName)
+        {
+            case "commune":
+                index += 0;
+                break;
+            case "rare":
+                index += 1;
+                break;
+            case "legendaire":
+                index += 2;
+                break;
+        }
+        return index;
     }
 }

@@ -10,7 +10,7 @@ public class balancierScie : MonoBehaviour
     private Transform childTransform; // Transform du premier enfant
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Obtient le Transform du premier enfant
         if (transform.childCount > 0)
