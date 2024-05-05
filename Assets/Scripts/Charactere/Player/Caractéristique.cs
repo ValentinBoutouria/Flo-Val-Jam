@@ -404,6 +404,22 @@ public class Caractéristique : MonoBehaviour
             LvlListe.gameObject.SetActive(true);
             TPVal Tpniveautemp= other.GetComponent<TPVal>();
             Tpniveautemp.lvl.gameObject.SetActive(true);
+            Transform listMob = null;
+            // Parcourt tous les enfants de Tpniveautemp.lvl
+            foreach (Transform child in Tpniveautemp.lvl.transform)
+            {
+                // Si l'enfant a le tag "listeMob", on le stocke dans listMob et on arrête la boucle
+                if (child.tag == "ListeMob")
+                {
+                    listMob = child;
+                    break;
+                }
+            }
+            foreach (Transform child in listMob)
+            {
+                child.GetComponent<CaractéristiqueMob>().PV = 50;
+                child.gameObject.SetActive(true);
+            }
             this.transform.position=Tpniveautemp.SpawnPoint.transform.position;
             this.transform.rotation=Tpniveautemp.SpawnPoint.transform.rotation;
         }
