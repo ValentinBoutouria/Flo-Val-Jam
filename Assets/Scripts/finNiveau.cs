@@ -25,31 +25,42 @@ public class finNiveau : MonoBehaviour
         isEndable = false;
         eq = GameObject.Find("GestionEquipement").GetComponent<Equipement>();
         GameStuff = eq.GameStuff;
-        ListeMob = GameObject.FindGameObjectWithTag("ListeMob");
+        foreach (Transform child in this.transform.parent)
+        {
+            // Si l'enfant a le tag "listeMob", on le stocke dans listMob et on arrête la boucle
+            if (child.tag == "ListeMob")
+            {
+                ListeMob = child.gameObject;
+                break;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         // Par défaut, on suppose que tous les enfants sont désactivés
-        isEndable = true;
-
+        bool tmp = true;
         // Parcourt tous les enfants de ListeMob
         foreach (Transform child in ListeMob.transform)
         {
+            Debug.Log(child.gameObject.name);
+
             // Si un enfant est activé, isEndable devient false et on arrête la boucle
             if (child.gameObject.activeSelf)
             {
-                isEndable = false;
+                tmp = false;
                 break;
             }
         }
+        isEndable = tmp;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log(isEndable == true);
             if (isEndable==true)
             {
                 other.transform.position = lobbySpawn.position;
@@ -98,16 +109,16 @@ public class finNiveau : MonoBehaviour
         switch (etoiles)
         {
             case "0 etoiles":
-                probabilites = new Dictionary<string, float> { { "legendaire", 0f }, { "rare", 0.1f }, { "commune", 0.9f } };
+                probabilites = new Dictionary<string, float> { { "legendaire", 0f }, { "rare", 0.00f }, { "commune", 1f } };
                 break;
             case "1 etoile":
-                probabilites = new Dictionary<string, float> { { "legendaire", 0f }, { "rare", 0.25f }, { "commune", 0.75f } };
+                probabilites = new Dictionary<string, float> { { "legendaire", 0f }, { "rare", 0.05f }, { "commune", 0.95f } };
                 break;
             case "2 etoiles":
-                probabilites = new Dictionary<string, float> { { "legendaire", 0.05f }, { "rare", 0.35f }, { "commune", 0.6f } };
+                probabilites = new Dictionary<string, float> { { "legendaire", 0.01f }, { "rare", 0.08f }, { "commune", 0.91f } };
                 break;
             case "3 etoiles":
-                probabilites = new Dictionary<string, float> { { "legendaire", 0.1f }, { "rare", 0.45f }, { "commune", 0.45f } };
+                probabilites = new Dictionary<string, float> { { "legendaire", 0.05f }, { "rare", 0.15f }, { "commune", 0.80f } };
                 break;
         }
 

@@ -15,6 +15,8 @@ public class Equipement : MonoBehaviour
     public List<Texture> icones = new List<Texture>();
     public GameObject emptyUI;
 
+    public bool fullStuff = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -116,9 +118,19 @@ public class Equipement : MonoBehaviour
         GameStuff.Add("epee", epeesDict);
         GameStuff.Add("Boots", bootsDict);
 
-        AvailableStuff.Add("Armures", new Dictionary<string, int>());
-        AvailableStuff.Add("epee", new Dictionary<string, int>());
-        AvailableStuff.Add("Boots", new Dictionary<string, int>());
+        if(fullStuff)
+        {
+            AvailableStuff.Add("Armures", armuresDict);
+            AvailableStuff.Add("epee", epeesDict);
+            AvailableStuff.Add("Boots", bootsDict);
+        }
+        else
+        {
+            AvailableStuff.Add("Armures", new Dictionary<string, int>());
+            AvailableStuff.Add("epee", new Dictionary<string, int>());
+            AvailableStuff.Add("Boots", new Dictionary<string, int>());
+        }
+
         EquippedStuff.Add("Armures", new Dictionary<string, int>());
         EquippedStuff.Add("epee", new Dictionary<string, int>());
         EquippedStuff.Add("Boots", new Dictionary<string, int>());

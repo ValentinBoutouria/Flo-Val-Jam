@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 using Unity.VisualScripting;
-using UnityEditor.TestTools.CodeCoverage;
 
 public class Caractéristique : MonoBehaviour
 
