@@ -695,19 +695,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8858279598723325679, guid: 23f9c0fccdf44cc4882228c498ab05cf, type: 3}
       propertyPath: tempsMax1Etoile
-      value: 5
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: -8858279598723325679, guid: 23f9c0fccdf44cc4882228c498ab05cf, type: 3}
       propertyPath: tempsMax0Etoiles
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: -8858279598723325679, guid: 23f9c0fccdf44cc4882228c498ab05cf, type: 3}
       propertyPath: tempsMax2Etoiles
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: -8858279598723325679, guid: 23f9c0fccdf44cc4882228c498ab05cf, type: 3}
       propertyPath: tempsMax3Etoiles
-      value: 0.65
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 557673694006079478, guid: 23f9c0fccdf44cc4882228c498ab05cf, type: 3}
       propertyPath: m_LocalPosition.x
