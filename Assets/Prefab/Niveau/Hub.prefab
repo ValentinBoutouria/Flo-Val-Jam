@@ -1764,6 +1764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnPoint: {fileID: 0}
   FinNiveauObj: {fileID: 0}
+  lvl: {fileID: 0}
 --- !u!1 &2778758812183411091
 GameObject:
   m_ObjectHideFlags: 0
@@ -3447,7 +3448,6 @@ GameObject:
   - component: {fileID: 1083989096572362655}
   - component: {fileID: 1516158142751552466}
   - component: {fileID: 9136389015267341280}
-  - component: {fileID: 214694695402896720}
   m_Layer: 0
   m_Name: Niveau (14)
   m_TagString: Untagged
@@ -3558,20 +3558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnPoint: {fileID: 0}
   FinNiveauObj: {fileID: 0}
---- !u!114 &214694695402896720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5343648990252045473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41a3570cd11252c408b76b461d9a6265, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpawnPoint: {fileID: 0}
-  FinNiveauObj: {fileID: 0}
+  lvl: {fileID: 0}
 --- !u!1 &5490150477129434389
 GameObject:
   m_ObjectHideFlags: 0
@@ -7017,6 +7004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnPoint: {fileID: 0}
   FinNiveauObj: {fileID: 0}
+  lvl: {fileID: 0}
 --- !u!1 &9089106525003732632
 GameObject:
   m_ObjectHideFlags: 0
